@@ -10,18 +10,13 @@ const PasswordGenerator = () => {
     useEffect(() => {
         const draftPassword = [];
 
-        draftPassword.push(randomDigit())
-        draftPassword.push(randomDigit())
-        draftPassword.push(randomSymbol())
-        draftPassword.push(randomSymbol())
-        draftPassword.push(randomLetter())
-        draftPassword.push(randomLetter())
-        draftPassword.push(randomLetter())
-        draftPassword.push(randomLetter())
-        draftPassword.push(randomLetter())
-        draftPassword.push(randomLetter())
-        draftPassword.push(randomLetter())
-        draftPassword.push(randomLetter())
+        let lettersLength = passwordLength - digitLength - symbolsLength;
+        if(lettersLength < 0) lettersLength = 0;
+
+        draftPassword.push(...Array.from({length: digitLength}, randomDigit))
+        draftPassword.push(...Array.from({length: symbolsLength}, randomSymbol))
+        draftPassword.push(...Array.from({length: lettersLength}, randomLetter))
+
 
         setPassword(draftPassword.slice(0, passwordLength).sort(() => Math.random() - 0.5).join(""))
 
