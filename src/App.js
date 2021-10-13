@@ -7,7 +7,7 @@ function App() {
     <main>
     <div className="container">
       <h1 className="app-title">Gerador de Senhas</h1>
-      
+      <br/>
       <PasswordGenerator/>
     </div>
     </main>
